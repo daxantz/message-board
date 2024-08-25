@@ -34,7 +34,17 @@ router.post("/new", (req, res) => {
 
   res.redirect("/");
 });
-
-router.get("/message/:id", (req, res) => {});
+//USE debugger to look at varibles, in the .find i had the id inside a parseint initally, i want to see the variables
+router.get("/message/:id", (req, res) => {
+  const id = req.params.id;
+  const foundMessage = messages.find((msg) => msg.id === id);
+  console.log(id);
+  console.log(messages);
+  if (foundMessage) {
+    res.render("details", { foundMessage });
+  } else {
+    res.status(404).send("Message not found");
+  }
+});
 
 module.exports = router;
