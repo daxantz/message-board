@@ -1,11 +1,23 @@
 <html>
   <body>
+    <nav>
+      <ul>
+        <li><a href="/new">New message</a></li>
+      </ul>
+    </nav>
+
     <div>
-      <% messages.forEach((msg)=>{ %>
-      <p><%= msg.user %></p>
-      <p><%= msg.text %></p>
-      <p><%= msg.added %></p>
-      <%})%>
+      <div>
+        <% messages.forEach((msg)=>{ %>
+        <div style="border: 2px solid black">
+          <p><%= msg.user %></p>
+          <p><%= msg.text %></p>
+          <p><%= msg.added %></p>
+          <button><a href="/message/<%=msg.id %>">Open</a></button>
+        </div>
+
+        <%})%>
+      </div>
     </div>
   </body>
 </html>
